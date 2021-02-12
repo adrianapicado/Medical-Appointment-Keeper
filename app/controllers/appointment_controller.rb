@@ -1,12 +1,12 @@
 class AppointmentController < ApplicationController
     ##create##
 
-    get 'appointment/new' do #render form 
-
+    get '/appointment/new' do #render form 
+        erb :'/appointment/new'
     end
 
-    post '/appointments' do #process form 
-        
+    post '/appointment' do #process form 
+
     end
 
 
