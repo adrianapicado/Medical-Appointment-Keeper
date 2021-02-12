@@ -23,3 +23,4 @@ gem "sinatra-activerecord", "~> 2.0"
 
 gem "sqlite3", "~> 1.4"
 gem "dotenv", "~> 2.7"
+gem 'sinatra-flash'
