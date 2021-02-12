@@ -18,6 +18,17 @@ class AppointmentController < ApplicationController
 
     ##read##
 
+    get '/appointment/:id' do
+       @appointment = Appointment.find(params[:id])
+       erb :'/appointment/show'
+    end
+
+end
+
+
+
+
+
 
 
 
@@ -33,4 +44,4 @@ class AppointmentController < ApplicationController
 
 
 
-end
+
