@@ -1,0 +1,5 @@
+<ul>
+<% @appointments.each do |a| %>
+    <li><a href="/appointments/<%= a.id %>"><%= a.description %></a></li><br>
+<% end %>
+</ul>

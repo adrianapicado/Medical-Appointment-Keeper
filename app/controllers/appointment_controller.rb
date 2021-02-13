@@ -11,17 +11,24 @@ class AppointmentController < ApplicationController
             clinic: params[:clinic],
             time: params[:time],
             address: params[:address],
-            phone: params[:phone]
+            phone: params[:phone],
+            description: params[:description]
         )
         redirect "/appointment/#{@appointment.id}"
     end
 
     ##read##
 
-    get '/appointment/:id' do
-       @appointment = Appointment.find(params[:id])
-       erb :'/appointment/show'
+    get '/appointments' do
+        @appointments = Appointment.all
+        erb :'/appointment/index'
     end
+
+    get '/appointments/:id' do
+        @appointment = Appointment.find(params[:id])
+        erb :'/appointment/show'
+     end
+
 
 end
 
