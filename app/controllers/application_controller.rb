@@ -7,6 +7,7 @@ configure do
    set :views, 'app/views'
    enable :sessions
    set :session_secret, ENV['SESSION_SECRET']
+   set :method_override, true
  end
 
 helpers do 
