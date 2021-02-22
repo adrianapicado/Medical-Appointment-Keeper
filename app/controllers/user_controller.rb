@@ -19,15 +19,19 @@ class UserController < ApplicationController
     end
 
     post '/user/login' do
+        @user = User.find_by_username(params[:username])
+        if user.authenticate(params["password"])
+            session["user_id"] = user.id
+            redirect "/appointments"
+        else
+            redirect "/user/login"
     end
-
-
+end
 
     # get '/user/:id' do 
     #    @user = User.find(params[:id])
     #    erb :'/user/show'
     #  end 
-
     
     get '/logout' do
         session.clear
