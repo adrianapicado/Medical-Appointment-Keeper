@@ -5,13 +5,14 @@ class UserController < ApplicationController
     end
     
     post '/user/signup' do 
-        if !params[:username].empty? && !params[:password].empty? && !User.find_by_username(params[:username])
-           User.create(username: params[:username], password: params[:password])
-           session[:user_id] = user.id
-           redirect "/appointments"
+        @user = User.new(name: params[:name], username: params[:username], password: params[:password])
+        if @user.save
+            session[:user_id] = @user.id
+            redirect "/appointments"
         else
             redirect "/user/signup"
         end
+
     end
 
     get '/user/login' do 
@@ -19,19 +20,20 @@ class UserController < ApplicationController
     end
 
     post '/user/login' do
-        @user = User.find_by_username(params[:username])
-        if user.authenticate(params["password"])
-            session["user_id"] = user.id
-            redirect "/appointments"
-        else
-            redirect "/user/login"
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+           session[:user_id] = @user.id 
+           redirect "/appointments"
+        else  
+           redirect "/user/login"
+        end 
+  
     end
-end
 
-    # get '/user/:id' do 
-    #    @user = User.find(params[:id])
-    #    erb :'/user/show'
-    #  end 
+    get '/user/:id' do 
+       @user = User.find(params[:id])
+       erb :'/user/show'
+     end 
     
     get '/logout' do
         session.clear
