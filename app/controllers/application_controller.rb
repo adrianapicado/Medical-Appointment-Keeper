@@ -12,6 +12,10 @@ configure do
  end
 
 helpers do 
+
+  not_found do
+    erb :oops
+  end
   
   def logged_in?      
     !!session[:user_id]
