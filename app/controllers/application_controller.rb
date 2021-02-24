@@ -33,7 +33,6 @@ def redirect_if_logged_in
     redirect "/appointments" if logged_in?
 end
 
-
 end 
 
 get "/" do
