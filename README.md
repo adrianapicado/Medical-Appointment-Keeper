@@ -6,9 +6,7 @@ Medical Appointment Keeper is a Sinatra app that allows users to keep track of t
 
 To use this app, you must sign up to create an account. 
 
-Once logged in a user is able to create an appointment card, a user also has the ability to view, update or delete all of the appointment
-
-cards they have created. 
+Once logged in a user is able to create an appointment card, a user also has the ability to view, update or delete all of the appointment cards they have created. 
 
 ## Installation
 
