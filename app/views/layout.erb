@@ -20,8 +20,12 @@
 
       <footer class="branding">
         <small>&copy; 2021 <strong>MedicalAppointmentKeeper</strong></small>
+        
+        <% if logged_in? %>
         <form method="POST" action="/logout">
-        <input type="submit" value= "Logout"
+        <input type="submit" value= "Logout">
+        </form>
+        <% end %>
       </footer>
     </div>
 
