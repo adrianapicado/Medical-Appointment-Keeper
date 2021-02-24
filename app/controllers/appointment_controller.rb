@@ -14,13 +14,14 @@ class AppointmentController < ApplicationController
             phone: params[:phone],
             description: params[:description]
         )
+        current_user.appointments << @appointment 
         redirect "/appointments/#{@appointment.id}"
     end
 
     ##read##
 
     get '/appointments' do
-        @appointments = Appointment.all
+        @appointments = Appointment.where(user_id: current_user.id)
         erb :'/appointment/index'
     end
 

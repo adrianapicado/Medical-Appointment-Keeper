@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
     get '/user/signup' do 
+        redirect_if_logged_in
         erb :'/user/new'        
     end
     
@@ -16,8 +17,10 @@ class UserController < ApplicationController
     end
 
     get '/user/login' do 
+        redirect_if_logged_in
         erb :'/user/login'  
     end
+
 
     post '/user/login' do
         @user = User.find_by(username: params[:username])
@@ -30,12 +33,7 @@ class UserController < ApplicationController
   
     end
 
-    get '/user/:id' do 
-       @user = User.find(params[:id])
-       erb :'/user/show'
-     end 
-    
-    get '/logout' do
+    post '/logout' do
         session.clear
         redirect '/'
     end

@@ -1,5 +1,9 @@
+<h2>Your Appointments</h2>
+
 <ul>
 <% @appointments.each do |a| %>
     <li><a href="/appointments/<%= a.id %>"><%= a.description %></a></li><br>
 <% end %>
 </ul>
+
+<a href="/appointment/new"><button type="button">Create new appointment card!</button></a>
