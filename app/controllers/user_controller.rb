@@ -11,7 +11,7 @@ class UserController < ApplicationController
             session[:user_id] = @user.id
             redirect "/appointments"
         else
-            flash[:alert] = "Please enter all required fields"
+            flash[:alert] = "Please enter all fields"
             redirect "/user/signup"
         end
 
@@ -29,6 +29,7 @@ class UserController < ApplicationController
            session[:user_id] = @user.id 
            redirect "/appointments"
         else  
+           flash[:alert] = "Please enter all fields"
            redirect "/user/login"
         end 
   
