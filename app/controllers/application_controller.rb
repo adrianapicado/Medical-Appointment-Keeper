@@ -33,11 +33,16 @@ def redirect_if_logged_in
     redirect "/appointments" if logged_in?
 end
 
+def redirect_if_not_auth(appointment)
+    if current_user.id != appointment.id
+      redirect "/appointments"
+    end
 end 
+
+end
 
 get "/" do
   erb :welcome
 end
-
 
 end

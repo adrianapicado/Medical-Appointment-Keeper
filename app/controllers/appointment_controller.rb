@@ -1,5 +1,5 @@
 class AppointmentController < ApplicationController
-    ##create##
+    
 
     get '/appointment/new' do #render form 
         redirect_if_not_logged_in
@@ -19,7 +19,7 @@ class AppointmentController < ApplicationController
         redirect "/appointments/#{@appointment.id}"
     end
 
-    ##read##
+    
 
     get '/appointments' do
         redirect_if_not_logged_in
@@ -30,14 +30,16 @@ class AppointmentController < ApplicationController
     get '/appointments/:id' do
         redirect_if_not_logged_in
         @appointment = Appointment.find(params[:id])
+        redirect_if_not_auth(@appointment)
         erb :'/appointment/show'
      end
 
-    ##update##
+    
 
     get '/appointments/:id/edit' do #RENDER FORM TO UPDATE 
         redirect_if_not_logged_in
         @appointment = Appointment.find(params[:id])
+        redirect_if_not_auth(@appointment)
         erb :'/appointment/edit'
     end
 
@@ -54,11 +56,12 @@ class AppointmentController < ApplicationController
         redirect "/appointments/#{@appointment.id}"
     end
 
-    ##delete##
+    
 
     delete '/appointments/:id' do 
         @appointment = Appointment.find_by(id: params[:id])
         @appointment.delete
+        redirect_if_not_auth(@appointment)
         redirect "/appointments"
     end
 
