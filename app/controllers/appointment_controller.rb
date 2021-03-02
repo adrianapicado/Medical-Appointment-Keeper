@@ -2,6 +2,7 @@ class AppointmentController < ApplicationController
     ##create##
 
     get '/appointment/new' do #render form 
+        redirect_if_not_logged_in
         erb :'/appointment/new'
     end
 
@@ -21,11 +22,13 @@ class AppointmentController < ApplicationController
     ##read##
 
     get '/appointments' do
+        redirect_if_not_logged_in
         @appointments = Appointment.where(user_id: current_user.id)
         erb :'/appointment/index'
     end
 
     get '/appointments/:id' do
+        redirect_if_not_logged_in
         @appointment = Appointment.find(params[:id])
         erb :'/appointment/show'
      end
@@ -33,6 +36,7 @@ class AppointmentController < ApplicationController
     ##update##
 
     get '/appointments/:id/edit' do #RENDER FORM TO UPDATE 
+        redirect_if_not_logged_in
         @appointment = Appointment.find(params[:id])
         erb :'/appointment/edit'
     end
